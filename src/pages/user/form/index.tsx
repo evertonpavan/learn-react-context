@@ -17,6 +17,12 @@ const FormData: React.FC = () => {
   const [lastName, setLastName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
 
+  console.log({
+    name,
+    lastName,
+    email,
+  })
+
   //usando o useContext para capturar as propriedades do UserContext
   const { setState: setGlobalState } = useContext(UserContext);
 

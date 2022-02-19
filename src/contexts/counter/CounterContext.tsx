@@ -1,4 +1,6 @@
+// import { createContext, FC, ReactNode, useEffect, useState } from "react";
 import { createContext, ReactNode, useEffect, useState } from "react";
+
 
 type CounterContextProps = {
   children: ReactNode;
@@ -12,18 +14,18 @@ interface ICounterContext {
 }
 
 export const initialValue: ICounterContext = {
-    counter: 0,
+    counter: 1,
     doubleCounter: 0,
     setCounter: () => {},
     increaseCounter: () => {}
   }
 
-export const CounterContext = createContext<ICounterContext>(initialValue);
+const CounterContext = createContext<ICounterContext>(initialValue);
 // export const CounterContext = createContext<ICounterContext | undefined>(undefined);
 // export const CounterContext = createContext();
 
-// export const  CounterContextProvider: FC = ({ children }) => {
-export function CounterContextProvider ({ children }: CounterContextProps) {
+// const  CounterContextProvider: FC = ({ children }) => {
+function CounterContextProvider ({ children }: CounterContextProps) {
   const [counter, setCounter] = useState(initialValue.counter);
   const [doubleCounter, setDoubleCounter] = useState(initialValue.doubleCounter);
 
@@ -47,3 +49,6 @@ export function CounterContextProvider ({ children }: CounterContextProps) {
     </CounterContext.Provider>
   )
 }
+
+export {CounterContextProvider}
+export default CounterContext

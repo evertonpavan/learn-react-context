@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { CounterContext } from "../contexts/CounterContext";
+import CounterContext from "../../contexts/counter/CounterContext";
 
 export function DoubleCounter() {
     const { doubleCounter } = useContext(CounterContext);
