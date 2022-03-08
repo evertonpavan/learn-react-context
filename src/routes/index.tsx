@@ -1,17 +1,41 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import React from "react";
+import { BrowserRouter, Navigate, Route, RouteProps, Routes } from "react-router-dom";
 
-import Login from "../pages/user/form";
-import Counter from "../pages/counter";
+import { Dashboard } from "../components/Dashboard";
+import { Login } from "../components/Login";
+import { useAuth } from "../hooks/useAuth";
 
-const GlobalRouter = () => {
+const Router = () => {
+
+  const { authenticated } = useAuth();
+
+  const PrivateRoute = ({ children }: any) => {
+    return authenticated ? children : <Navigate to="/" />;
+  };
+
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/counter" element={<Counter />} />
+        <Route
+          path="/dashboard"
+          element={
+            <PrivateRoute>
+              <Dashboard />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="*"
+          element={
+            <main style={{ padding: "1rem" }}>
+              <p>There's nothing here!</p>
+            </main>
+          }
+    />
       </Routes>
     </BrowserRouter>
   );
 };
 
-export default GlobalRouter;
+export default Router;
