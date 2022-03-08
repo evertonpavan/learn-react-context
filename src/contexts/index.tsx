@@ -1,24 +1,12 @@
 import { FC } from "react";
-import { CounterContextProvider } from "./counter/CounterContext";
-import { UserContextProvider } from "./user/UserContext";
+import { AuthContextProvider } from "./auth/AuthContext";
 
-const GlobalContext: FC = ({ children }) => {
+const AuthContext: FC = ({ children }) => {
     return (
         <>
-            <UserContextProvider> {children} </UserContextProvider>
+            <AuthContextProvider> {children} </AuthContextProvider>
         </>
     )
 }
 
-export  { GlobalContext };
-
-
-const CounterContext: FC = ({ children }) => {
-    return (
-        <>
-            <CounterContextProvider> {children} </CounterContextProvider>
-        </>
-    )
-}
-
-export { CounterContext };
+export { AuthContext };

@@ -1,15 +1,14 @@
-import {GlobalContext} from './contexts';
-import {CounterContext} from './contexts';
+import { AuthContext } from './contexts';
 import Router from './routes';
+
+import './styles/App.css';
 
 function App() {
 
   return (
-    <GlobalContext>
-      <CounterContext>
-        <Router />
-      </CounterContext>
-    </GlobalContext>
+    <AuthContext>
+      <Router />
+    </AuthContext>
   );
 }
 
