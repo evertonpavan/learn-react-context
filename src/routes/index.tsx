@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Navigate, Outlet, Route, Routes } from "react-router-dom";
 
 import { Dashboard } from "../components/Dashboard";
-import { Login } from "../components/Login";
+import { LoginForm } from "../components/Login";
 import { useAuth } from "../hooks/useAuth";
 
 const Router = () => {
@@ -20,7 +20,7 @@ const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={<LoginForm />} />
         {/* <Route
           path="/dashboard"
           element={

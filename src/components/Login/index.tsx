@@ -3,7 +3,7 @@ import { useAuth } from '../../hooks/useAuth';
 import './style.css';
 import { Link, useNavigate } from 'react-router-dom';
 
-export function Login() {
+export function LoginForm() {
 
     const { Login, user, authenticated } = useAuth()
 
