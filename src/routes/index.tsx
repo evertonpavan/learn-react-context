@@ -1,30 +1,37 @@
 import React from "react";
-import { BrowserRouter, Navigate, Route, RouteProps, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Outlet, Route, Routes } from "react-router-dom";
 
 import { Dashboard } from "../components/Dashboard";
-import { Login } from "../components/Login";
+import { LoginForm } from "../components/Login";
 import { useAuth } from "../hooks/useAuth";
 
 const Router = () => {
 
   const { authenticated } = useAuth();
 
-  const PrivateRoute = ({ children }: any) => {
-    return authenticated ? children : <Navigate to="/" />;
+  // const PrivateRoute = ({ children }: any) => {
+  //   return authenticated ? children : <Navigate to="/" />;
+  // };
+
+  const PrivateOutlet = () => {
+    return authenticated ? <Outlet /> : <Navigate to="/" />;
   };
 
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Login />} />
-        <Route
+        <Route path="/" element={<LoginForm />} />
+        {/* <Route
           path="/dashboard"
           element={
             <PrivateRoute>
               <Dashboard />
             </PrivateRoute>
           }
-        />
+        /> */}
+        <Route element={<PrivateOutlet />}>
+          <Route path="/dashboard" element={<Dashboard />} />
+        </Route>
         <Route
           path="*"
           element={
